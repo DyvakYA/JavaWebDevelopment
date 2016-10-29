@@ -1,9 +1,11 @@
 package com.dyvak;
 
+
 /**
  * Created by Dyvak on 29.10.2016.
  */
 public class Model {
+    private int randomValue;
     private int value;
     private int minCommonValueDiapason = 0;
     private int maxCommonValueDiapason = 100;
@@ -13,31 +15,42 @@ public class Model {
     /**
      * in this method add valueInt with this.value
      *
-     * @param valueInt
+     * @param //valueInt
      * @return sum
      */
 
-    public boolean checkResult(int valueInt, int commonValue) {
-        boolean result = false;
-        while (valueInt != commonValue) {
+    public int checkResult() {
+        int result=0;
 
-            if (valueInt == commonValue) {
-                result = true;
-            } else if (valueInt > commonValue) {
-                setMaxCommonValueDiapason(valueInt);
-                result = false;
-            } else if (valueInt < commonValue) {
-                setMinCommonValueDiapason(valueInt);
-                result = false;
+            if (getValue() == randomValue) {
+                result = 1;
+            } else if (getValue() > randomValue) {
+                setMaxCommonValueDiapason(value);
+                result = 0;
+            } else if (getValue() < randomValue) {
+                setMinCommonValueDiapason(value);
+                result = 0;
             }//else break;
-        }
+        System.out.println(result);
+        System.out.println(getRandomValue());
+        System.out.println(getValue());
         return result;
     }
 
-    public int commonValue(){
 
-        int commonValue = (int) (Math.random()* minCommonValueDiapason+(maxCommonValueDiapason-minCommonValueDiapason));
-        return commonValue;
+
+    public void randomValue(){
+
+        int randomValue = (int) (Math.random()* 100);
+        setRandomValue(randomValue);
+    }
+
+    public int getRandomValue() {
+        return randomValue;
+    }
+
+    public void setRandomValue(int randomValue) {
+        this.randomValue = randomValue;
     }
 
     public int getMinCommonValueDiapason() {
@@ -56,13 +69,12 @@ public class Model {
         this.maxCommonValueDiapason = maxCommonValueDiapason;
     }
 
-    public int getValue() {
-
-
+     public int getValue() {
         return value;
     }
 
     public void setValue(int value) {
         this.value = value;
     }
+
 }

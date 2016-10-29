@@ -7,8 +7,12 @@ public class Main {
 
     public static void main(String[] args) {
         // Initialization
+
+
+
         com.dyvak.Model model = new com.dyvak.Model();
-        View view = new View();
+
+        View view = new View(model);
         Controller controller = new Controller(model, view);
         // Run
         controller.processUser();

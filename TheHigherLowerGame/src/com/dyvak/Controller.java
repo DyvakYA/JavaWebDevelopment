@@ -16,25 +16,44 @@ public class Controller {
         this.view = view;
     }
 
-    // The Work method
+        // The Work method
+        public void processUser(){
+            Scanner sc = new Scanner(System.in);
 
-    public void processUser() {
-        Scanner sc = new Scanner(System.in);
+            model.randomValue();
+            System.out.println(model.getRandomValue());
 
-        model.setValue(inputIntValueWithScanner(sc));
-        model.commonValue();
-        model.checkResult(inputIntValueWithScanner(sc), model.commonValue());
+            view.printMessage(view.INPUT_INT_DATA);
+            model.setValue(sc.nextInt());
 
-        view.printMessageAndInt(view.OUR_INT, model.getValue());
-    }
+            checkCurrentValue(sc);
 
-    // The Utility methods
-    public int inputIntValueWithScanner(Scanner sc) {
-        view.printMessage(view.INPUT_INT_DATA);
-        while (!sc.hasNextInt()) {
-            view.printMessage(view.WRONG_INPUT_INT_DATA + view.INPUT_INT_DATA);
-            sc.next();
+
         }
-        return sc.nextInt();
+
+        // The Utility methods
+
+    public void checkCurrentValue(Scanner sc) {
+
+        boolean bol = true;
+
+        int res;
+
+       do {
+
+            res = model.checkResult();
+
+            if (res == 0) {
+                view.printMessage(view.WRONG_INPUT_INT_DATA + view.INPUT_INT_DATA);
+                view.printMessage("New diapason " + model.getMinCommonValueDiapason() + "-" + model.getMaxCommonValueDiapason());
+                model.setValue(sc.nextInt());
+            }else
+             {
+                view.printMessageAndInt(view.OUR_INT, model.getValue());
+                bol = false;
+            }
+
+
+        }while (bol);
     }
 }
