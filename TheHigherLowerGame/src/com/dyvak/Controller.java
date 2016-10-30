@@ -16,18 +16,22 @@ public class Controller {
         this.view = view;
     }
 
-        // The Work method
+    public Controller() {
+
+    }
+
+    // The Work method
         public void processUser(){
             Scanner sc = new Scanner(System.in);
 
             model.randomValue();
-            System.out.println(model.getRandomValue());
+            //System.out.println(model.getRandomValue());
 
+            view.printMessage(view.INTRODUCTION + model.getMinCompValueDiapason() + "-" + model.getMaxCompValueDiapason());
             view.printMessage(view.INPUT_INT_DATA);
             model.setValue(sc.nextInt());
 
             checkCurrentValue(sc);
-
 
         }
 
@@ -35,25 +39,21 @@ public class Controller {
 
     public void checkCurrentValue(Scanner sc) {
 
-        boolean bol = true;
-
-        int res;
-
        do {
 
-            res = model.checkResult();
+            boolean res = model.checkResult();
 
-            if (res == 0) {
+            if (res == false) {
                 view.printMessage(view.WRONG_INPUT_INT_DATA + view.INPUT_INT_DATA);
-                view.printMessage("New diapason " + model.getMinCommonValueDiapason() + "-" + model.getMaxCommonValueDiapason());
+                view.printMessage(view.NEW_DIAPASON + model.getMinCompValueDiapason() + "-" + model.getMaxCompValueDiapason());
                 model.setValue(sc.nextInt());
             }else
              {
-                view.printMessageAndInt(view.OUR_INT, model.getValue());
-                bol = false;
-            }
+                view.printMessageAndInt(view.WIN_INT, model.getValue());
+                break;
+             }
 
 
-        }while (bol);
+        }while (true);
     }
 }

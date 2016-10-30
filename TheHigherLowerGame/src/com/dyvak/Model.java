@@ -1,14 +1,13 @@
 package com.dyvak;
 
-
 /**
  * Created by Dyvak on 29.10.2016.
  */
 public class Model {
     private int randomValue;
     private int value;
-    private int minCommonValueDiapason = 0;
-    private int maxCommonValueDiapason = 100;
+    private int minCompValueDiapason = 0;
+    private int maxCompValueDiapason = 100;
 
     // The Program logic
 
@@ -19,28 +18,23 @@ public class Model {
      * @return sum
      */
 
-    public int checkResult() {
-        int result=0;
+    public boolean checkResult() {
+        boolean result = false;
 
             if (getValue() == randomValue) {
-                result = 1;
+                result = true;
             } else if (getValue() > randomValue) {
-                setMaxCommonValueDiapason(value);
-                result = 0;
+                setMaxCompValueDiapason(value);
+                result = false;
             } else if (getValue() < randomValue) {
-                setMinCommonValueDiapason(value);
-                result = 0;
-            }//else break;
-        System.out.println(result);
-        System.out.println(getRandomValue());
-        System.out.println(getValue());
+                setMinCompValueDiapason(value);
+                result = false;
+            }
+
         return result;
     }
 
-
-
     public void randomValue(){
-
         int randomValue = (int) (Math.random()* 100);
         setRandomValue(randomValue);
     }
@@ -53,20 +47,20 @@ public class Model {
         this.randomValue = randomValue;
     }
 
-    public int getMinCommonValueDiapason() {
-        return minCommonValueDiapason;
+    public int getMinCompValueDiapason() {
+        return minCompValueDiapason;
     }
 
-    public void setMinCommonValueDiapason(int minCommonValueDiapason) {
-        this.minCommonValueDiapason = minCommonValueDiapason;
+    public void setMinCompValueDiapason(int minCompValueDiapason) {
+        this.minCompValueDiapason = minCompValueDiapason;
     }
 
-    public int getMaxCommonValueDiapason() {
-        return maxCommonValueDiapason;
+    public int getMaxCompValueDiapason() {
+        return maxCompValueDiapason;
     }
 
-    public void setMaxCommonValueDiapason(int maxCommonValueDiapason) {
-        this.maxCommonValueDiapason = maxCommonValueDiapason;
+    public void setMaxCompValueDiapason(int maxCompValueDiapason) {
+        this.maxCompValueDiapason = maxCompValueDiapason;
     }
 
      public int getValue() {
