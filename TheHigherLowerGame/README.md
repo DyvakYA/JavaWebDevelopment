@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-﻿# TheHigherLowerGame
 =======
 # TheHigherLowerGame
 >>>>>>> origin/master
