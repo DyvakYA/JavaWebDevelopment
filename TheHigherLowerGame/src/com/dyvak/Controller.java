@@ -21,39 +21,45 @@ public class Controller {
     }
 
     // The Work method
-        public void processUser(){
-            Scanner sc = new Scanner(System.in);
+    public void processUser() throws Exception  {
+        Scanner sc = new Scanner(System.in);
 
-            model.randomValue();
-            //System.out.println(model.getRandomValue());
+        model.randomValue();
+        //System.out.println(model.getRandomValue());
 
-            view.printMessage(view.INTRODUCTION + model.getMinCompValueDiapason() + "-" + model.getMaxCompValueDiapason());
-            view.printMessage(view.INPUT_INT_DATA);
-            model.setValue(sc.nextInt());
+        view.printMessage(view.INTRODUCTION + model.getMinCompValueDiapason() + "-" + model.getMaxCompValueDiapason());
+        view.printMessage(view.INPUT_INT_DATA);
 
-            checkCurrentValue(sc);
 
+        try{
+            int userValue = sc.nextInt();
+            model.setValue(userValue);
+        }catch (Exception e){
+           //NOP
         }
 
-        // The Utility methods
+        checkCurrentValue(sc);
+    }
+
+    // The Utility methods
 
     public void checkCurrentValue(Scanner sc) {
 
-       do {
+         do {
 
             boolean res = model.checkResult();
+
+            //int userValue = sc.nextInt();
 
             if (res == false) {
                 view.printMessage(view.WRONG_INPUT_INT_DATA + view.INPUT_INT_DATA);
                 view.printMessage(view.NEW_DIAPASON + model.getMinCompValueDiapason() + "-" + model.getMaxCompValueDiapason());
                 model.setValue(sc.nextInt());
-            }else
-             {
+            } else {
                 view.printMessageAndInt(view.WIN_INT, model.getValue());
                 break;
-             }
+            }
 
-
-        }while (true);
+        } while (true);
     }
 }

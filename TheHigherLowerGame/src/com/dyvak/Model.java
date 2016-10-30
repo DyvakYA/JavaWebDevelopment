@@ -11,11 +11,12 @@ public class Model {
 
     // The Program logic
 
+
     /**
      * in this method add valueInt with this.value
-     *
      * @param //valueInt
-     * @return sum
+     * @param value
+     * @param randomValue @return sum
      */
 
     public boolean checkResult() {

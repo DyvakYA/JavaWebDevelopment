@@ -16,7 +16,8 @@ public class ControllerTest {
 
     @Test
     public void testProcessUser() throws Exception {
-
+        assertTrue(false);
+        assertTrue(true);
     }
 
     @Test
