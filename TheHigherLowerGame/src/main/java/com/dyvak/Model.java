@@ -1,51 +1,65 @@
 package com.dyvak;
 
 /**
- * Created by Dyvak on 29.10.2016.
+ * Model.java
+ * <p>
+ * It is class of business logic.
+ * It makes game "Guess the number".
+ * Main functions is to create correct limits,
+ * to generate pseudo-random number and to verify
+ * it with input value.
+ *
+ * @author Dyvak Yurii(dyvakyurii@gmail.com)
+ * @version 1.0 on 29.10.2016.
  */
 public class Model {
-    private int randomValue;
-    private int value;
+    private int compValue;
+    private int userValue;
     private int minCompValueDiapason = 0;
     private int maxCompValueDiapason = 100;
 
-    // The Program logic
 
 
     /**
-     * in this method add valueInt with this.value
-     * @param //valueInt
-     * @param value
-     * @param randomValue @return sum
+     * class for equals 2 parameter
+     * 1-userValue - value entered with the keyboard
+     * 2-compValue - random value which put forth a computer
+     * @return public boolean checkResult()
      */
-
+    // The Program logic
     public boolean checkResult() {
         boolean result = false;
 
-            if (getValue() == randomValue) {
+            if (getUserValue() == compValue) {
                 result = true;
-            } else if (getValue() > randomValue) {
-                setMaxCompValueDiapason(value);
+            } else if (getUserValue() > compValue) {
+                setMaxCompValueDiapason(userValue);
                 result = false;
-            } else if (getValue() < randomValue) {
-                setMinCompValueDiapason(value);
+            } else if (getUserValue() < compValue) {
+                setMinCompValueDiapason(userValue);
                 result = false;
             }
 
         return result;
     }
 
-    public void randomValue(){
+
+    public void compValue(){
         int randomValue = (int) (Math.random()* 100);
-        setRandomValue(randomValue);
+        setCompValue(randomValue);
     }
 
-    public int getRandomValue() {
-        return randomValue;
+    /**
+     * Getters and Setters
+     * @return public int getCompValue()
+     */
+
+    public int getCompValue() {
+        return compValue;
     }
 
-    public void setRandomValue(int randomValue) {
-        this.randomValue = randomValue;
+    public void setCompValue(int compValue) {
+        this.compValue = compValue;
     }
 
     public int getMinCompValueDiapason() {
@@ -64,12 +78,12 @@ public class Model {
         this.maxCompValueDiapason = maxCompValueDiapason;
     }
 
-     public int getValue() {
-        return value;
+     public int getUserValue() {
+        return userValue;
     }
 
-    public void setValue(int value) {
-        this.value = value;
+    public void setUserValue(int userValue) {
+        this.userValue = userValue;
     }
 
 }
