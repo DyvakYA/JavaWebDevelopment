@@ -21,18 +21,33 @@ public class Model {
      *
      */
     private int minCompValueDiapason;
+
+    public void setMaxCompValueDiapason(int maxCompValueDiapason) {
+        this.maxCompValueDiapason = maxCompValueDiapason;
+    }
+
+    public void setMinCompValueDiapason(int minCompValueDiapason) {
+        this.minCompValueDiapason = minCompValueDiapason;
+    }
+
     /**
      *
+
      */
     private int maxCompValueDiapason;
 
     /**
      * class for equals 2 parameter
-     * 1-userValue - value entered with the keyboard
+     * 1-value - value entered with the keyboard from console
      * 2-compValue - random value which put forth a computer
      *
      * @param value
      * @return public boolean checkValue()
+     *
+     * /**
+     * checking equals value from console and compValue,
+     * change diapasons and
+     * return boolean value for determine win or lose
      */
     // The Program logic
     public boolean checkValue(int value) {
@@ -66,7 +81,6 @@ public class Model {
      *
      * @return public int getCompValue()
      */
-
     public int getCompValue() {
         return compValue;
     }

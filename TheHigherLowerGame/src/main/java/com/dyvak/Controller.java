@@ -17,7 +17,6 @@ public class Controller {
     Model model;
     View view;
 
-    String userValue;
     ArrayList userValues = new ArrayList();
 
     /**
@@ -41,8 +40,10 @@ public class Controller {
          /* Scanner to makes input from console */
         Scanner sc = new Scanner(System.in);
 
-        model.setValueDiapason(GlobalConstants.MIN_COMP_VALUE_DIAPASON,
-                GlobalConstants.MAX_COMP_VALUE_DIAPASON);
+        view.printMessage(View.INPUT_MAX_DIAPASON);
+        model.setMaxCompValueDiapason(sc.nextInt());
+        view.printMessage(View.INPUT_MIN_DIAPASON);
+        model.setMinCompValueDiapason(sc.nextInt());
 
         model.setCompValue();
         //System.out.println(model.getCompValue()); //hint
@@ -54,19 +55,6 @@ public class Controller {
 
         while (!model.checkValue(inputIntValueWithScanner(sc))){}
         view.printMessage(View.CONGRATULATION + model.getCompValue());
-        /**
-         * enter userValue
-         * set in @param value
-         * and add userValue in ArrayList
-         */
-
-
-        /**
-         * checking equals userValue and compValue,
-         * change diapasons and
-         * return boolean value for determine win or lose
-         */
-
     }
 
     /**
@@ -102,6 +90,11 @@ public class Controller {
             }
             break;
         }
+
+        /**
+         * return @param res
+         * and add res in ArrayList
+         */
         userValues.add(res);
         //change history
         view.printMessage(View.HISTORY);

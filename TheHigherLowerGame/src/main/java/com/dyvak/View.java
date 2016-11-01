@@ -17,6 +17,8 @@ public class View {
 
     // Text's constants
     public static final String INPUT_INT_DATA = "Input INT value = ";
+    public static final String INPUT_MIN_DIAPASON = "Input MIN diapason INT value = ";
+    public static final String INPUT_MAX_DIAPASON = "Input MAX diapason INT value = ";
     public static final String WRONG_INPUT_INT_DATA = "Wrong input! Repeat please! ";
     public static final String CONGRATULATION = "You win INT value = ";
     public static final String INTRODUCTION = "Welcome to the game. Man against computer.";
