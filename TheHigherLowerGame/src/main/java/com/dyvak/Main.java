@@ -11,7 +11,7 @@ package com.dyvak;
  */
 public class Main {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         // Initialization
 
         com.dyvak.Model model = new com.dyvak.Model();

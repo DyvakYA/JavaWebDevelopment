@@ -13,44 +13,57 @@ package com.dyvak;
  * @version 1.0 on 29.10.2016.
  */
 public class Model {
+    /**
+     *
+     */
     private int compValue;
-    private int userValue;
-    private int minCompValueDiapason = 0;
-    private int maxCompValueDiapason = 100;
-
-
+    /**
+     *
+     */
+    private int minCompValueDiapason;
+    /**
+     *
+     */
+    private int maxCompValueDiapason;
 
     /**
      * class for equals 2 parameter
      * 1-userValue - value entered with the keyboard
      * 2-compValue - random value which put forth a computer
-     * @return public boolean checkResult()
+     *
+     * @param value
+     * @return public boolean checkValue()
      */
     // The Program logic
-    public boolean checkResult() {
-        boolean result = false;
+    public boolean checkValue(int value) {
 
-            if (getUserValue() == compValue) {
-                result = true;
-            } else if (getUserValue() > compValue) {
-                setMaxCompValueDiapason(userValue);
-                result = false;
-            } else if (getUserValue() < compValue) {
-                setMinCompValueDiapason(userValue);
-                result = false;
-            }
-
-        return result;
+        if (value == compValue) {
+            return true;
+        } else if (value > compValue) {
+            maxCompValueDiapason = value;
+        } else {
+            minCompValueDiapason = value;
+        }
+        return false;
     }
 
+    /**
+     * @param minCompValueDiapason
+     * @param maxCompValueDiapason
+     */
+    public void setValueDiapason(int minCompValueDiapason, int maxCompValueDiapason) {
+        this.minCompValueDiapason = minCompValueDiapason; // check
+        this.maxCompValueDiapason = maxCompValueDiapason;
+    }
 
-    public void compValue(){
-        int randomValue = (int) (Math.random()* 100);
-        setCompValue(randomValue);
+    public void setCompValue() {
+        compValue = (int) Math.ceil(Math.random() *
+                (maxCompValueDiapason - minCompValueDiapason - 1) + minCompValueDiapason);
     }
 
     /**
      * Getters and Setters
+     *
      * @return public int getCompValue()
      */
 
@@ -58,32 +71,11 @@ public class Model {
         return compValue;
     }
 
-    public void setCompValue(int compValue) {
-        this.compValue = compValue;
-    }
-
     public int getMinCompValueDiapason() {
         return minCompValueDiapason;
-    }
-
-    public void setMinCompValueDiapason(int minCompValueDiapason) {
-        this.minCompValueDiapason = minCompValueDiapason;
     }
 
     public int getMaxCompValueDiapason() {
         return maxCompValueDiapason;
     }
-
-    public void setMaxCompValueDiapason(int maxCompValueDiapason) {
-        this.maxCompValueDiapason = maxCompValueDiapason;
-    }
-
-     public int getUserValue() {
-        return userValue;
-    }
-
-    public void setUserValue(int userValue) {
-        this.userValue = userValue;
-    }
-
 }

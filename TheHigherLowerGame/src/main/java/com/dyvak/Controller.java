@@ -13,26 +13,17 @@ import java.util.Scanner;
  * @author Dyvak Yurii(dyvakyurii@gmail.com)
  * @version 1.0 on 29.10.2016.
  */
-
 public class Controller {
-
-    /**
-     * Objects of model and view, which we will instantly in constructor
-     */
-    // Constructor
     Model model;
     View view;
 
-
-    int userValue;
+    String userValue;
     ArrayList userValues = new ArrayList();
 
     /**
      * Default constructor with view object initializing
      */
-    public Controller() {
-    }
-
+    // Constructor
     public Controller(Model model, View view) {
         this.model = model;
         this.view = view;
@@ -45,75 +36,82 @@ public class Controller {
      * in correct way. Also it makes and show statistic using
      * data, which we create during playing the game
      */
-
     // The Work method
     public void processUser(){
          /* Scanner to makes input from console */
         Scanner sc = new Scanner(System.in);
 
-        model.compValue();
-        //System.out.println(model.getCompValue()); /hint
+        model.setValueDiapason(GlobalConstants.MIN_COMP_VALUE_DIAPASON,
+                GlobalConstants.MAX_COMP_VALUE_DIAPASON);
+
+        model.setCompValue();
+        //System.out.println(model.getCompValue()); //hint
 
         /**
          * Introduction, print allowable range,and show input message
          */
+        view.printMessage(view.INTRODUCTION);
 
-        view.printMessage(view.INTRODUCTION + model.getMinCompValueDiapason() + "-" + model.getMaxCompValueDiapason());
-        view.printMessage(view.INPUT_INT_DATA);
-
+        while (!model.checkValue(inputIntValueWithScanner(sc))){}
+        view.printMessage(View.CONGRATULATION + model.getCompValue());
         /**
          * enter userValue
          * set in @param value
          * and add userValue in ArrayList
          */
-        int userValue = sc.nextInt();
-        model.setUserValue(userValue);
-        userValues.add(userValue);
+
 
         /**
          * checking equals userValue and compValue,
          * change diapasons and
          * return boolean value for determine win or lose
          */
-        checkCurrentValue(sc);
-    }
 
+    }
 
     /**
      * Checking input values.
      * Verifying on integer digits.
      *
      * @param sc Scanner, which has created in processUser
-     * return integer value of number from console
+     * @return integer value of number from console
      */
     // The Utility methods
-    public void checkCurrentValue(Scanner sc) {
+    public int inputIntValueWithScanner(Scanner sc) {
 
-        do {
+        int res=0;
+        view.printMessage(View.INPUT_INT_DATA
+                + model.getMinCompValueDiapason()
+                + "-" +
+                + model.getMaxCompValueDiapason());
 
-            boolean res = model.checkResult();
+        while (true) {
 
-            if (res == false) {
-                    view.printMessage(view.WRONG_INPUT_INT_DATA + view.INPUT_INT_DATA);
-                    view.printMessage(view.NEW_DIAPASON + model.getMinCompValueDiapason() + "-" + model.getMaxCompValueDiapason());
-
-                    //change history
-                    view.printMessage(view.HISTORY);
-                    view.printArrayList(userValues);
-
-
-                    userValue=sc.nextInt();
-                    model.setUserValue(userValue);
-
-                    //add to arrayList for history of userValues
-                    userValues.add(userValue);
-                } else {
-                    view.printMessageAndInt(view.WIN_INT, model.getUserValue());
-                    break;
-                }
-        } while (true);
+            //check int - value
+            while (!sc.hasNextInt()) {
+                view.printMessage(View.WRONG_INPUT_INT_DATA
+                        + View.INPUT_INT_DATA);
+                sc.next();
+            }
+            //check value in diapason
+            if ((res = sc.nextInt()) <= model.getMinCompValueDiapason() ||
+                    res >= model.getMaxCompValueDiapason()) {
+                view.printMessage(View.WRONG_INPUT_INT_DATA
+                        + View.INPUT_INT_DATA);
+                continue;
+            }
+            break;
+        }
+        userValues.add(res);
+        //change history
+        view.printMessage(View.HISTORY);
+        view.printArrayList(userValues);
+        return res;
     }
 }
+
+
+
 
 
 
