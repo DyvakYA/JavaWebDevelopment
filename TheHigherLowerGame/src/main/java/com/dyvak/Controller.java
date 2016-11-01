@@ -46,7 +46,7 @@ public class Controller {
         model.setMinCompValueDiapason(sc.nextInt());
 
         model.setCompValue();
-        //System.out.println(model.getCompValue()); //hint
+        //System.out.println(model.getCompValue()); //hint for testing results
 
         /**
          * Introduction, print allowable range,and show input message
@@ -96,7 +96,7 @@ public class Controller {
          * and add res in ArrayList
          */
         userValues.add(res);
-        //change history
+        //change history of entering values
         view.printMessage(View.HISTORY);
         view.printArrayList(userValues);
         return res;

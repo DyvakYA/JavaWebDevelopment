@@ -13,8 +13,6 @@ import java.util.List;
  */
 public class View {
 
-
-
     // Text's constants
     public static final String INPUT_INT_DATA = "Input INT value = ";
     public static final String INPUT_MIN_DIAPASON = "Input MIN diapason INT value = ";

@@ -32,7 +32,6 @@ public class Model {
 
     /**
      *
-
      */
     private int maxCompValueDiapason;
 
@@ -66,6 +65,7 @@ public class Model {
      * @param minCompValueDiapason
      * @param maxCompValueDiapason
      */
+    //from version 1.0 where user can not enter diapason parameters
     public void setValueDiapason(int minCompValueDiapason, int maxCompValueDiapason) {
         this.minCompValueDiapason = minCompValueDiapason; // check
         this.maxCompValueDiapason = maxCompValueDiapason;
