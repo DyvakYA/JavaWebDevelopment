@@ -14,24 +14,17 @@ package com.dyvak;
  */
 public class Model {
     /**
-     *
+     * compValue parameter it is random parameter,
+     * who thinks of the computer,
+     * this setting you have to guess
      */
     private int compValue;
     /**
-     *
+     * minimal parameter of values diapason enter from console by user
      */
     private int minCompValueDiapason;
-
-    public void setMaxCompValueDiapason(int maxCompValueDiapason) {
-        this.maxCompValueDiapason = maxCompValueDiapason;
-    }
-
-    public void setMinCompValueDiapason(int minCompValueDiapason) {
-        this.minCompValueDiapason = minCompValueDiapason;
-    }
-
     /**
-     *
+     * maximal parameter of values diapason enter from console by user
      */
     private int maxCompValueDiapason;
 
@@ -89,7 +82,17 @@ public class Model {
         return minCompValueDiapason;
     }
 
+    public void setMinCompValueDiapason(int minCompValueDiapason) {
+        this.minCompValueDiapason = minCompValueDiapason;
+    }
+
     public int getMaxCompValueDiapason() {
         return maxCompValueDiapason;
     }
+
+    public void setMaxCompValueDiapason(int maxCompValueDiapason) {
+        this.maxCompValueDiapason = maxCompValueDiapason;
+    }
 }
+
+
