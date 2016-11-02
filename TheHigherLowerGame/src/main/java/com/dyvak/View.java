@@ -36,6 +36,7 @@ public class View {
 
     /**
      *  @param message string sequence, which we will need to print
+     *  @param value for printing value with message
      */
 
     public void printMessageAndInt(String message, int value) {

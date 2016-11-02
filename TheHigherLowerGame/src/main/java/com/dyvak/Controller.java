@@ -21,6 +21,8 @@ public class Controller {
 
     /**
      * Default constructor with view object initializing
+     * @param  model activate model
+     * @param  view activate view
      */
     // Constructor
     public Controller(Model model, View view) {

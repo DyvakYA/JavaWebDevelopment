@@ -33,7 +33,7 @@ public class Model {
      * 1-value - value entered with the keyboard from console
      * 2-compValue - random value which put forth a computer
      *
-     * @param value
+     * @param value checkValue check value param equal compValue
      * @return public boolean checkValue()
      *
      * /**
@@ -55,8 +55,8 @@ public class Model {
     }
 
     /**
-     * @param minCompValueDiapason
-     * @param maxCompValueDiapason
+     * @param minCompValueDiapason value for setting min diapason of values
+     * @param maxCompValueDiapason value for setting max diapason of values
      */
     //from version 1.0 where user can not enter diapason parameters from console
     public void setValueDiapason(int minCompValueDiapason, int maxCompValueDiapason) {
