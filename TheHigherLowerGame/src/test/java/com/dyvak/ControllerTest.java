@@ -1,27 +1,24 @@
 package com.dyvak;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class ControllerTest {
 
-    private Controller c;
+    private static Controller controller;
 
-    @Before
-    public void setUp() throws Exception {
-        //c = new Controller();
+    @BeforeClass
+    public static void init() {
+        controller = new Controller(null, null);
     }
 
-    @Test
-    public void testProcessUser() throws Exception {
-        //assertTrue(false);
-        //assertTrue(true);
+    @Test(expected = Exception.class)
+    public void runGameTest(){
+        controller.processUser();
     }
 
-    @Test
-    public void testCheckCurrentValue() throws Exception {
-        //assertEquals(0,c.inputIntValueWithScanner(5));
+    @Test(expected = NullPointerException.class)
+    public void inputIntValueWithScannerTest() {
+        controller.inputIntValueWithScanner(null);
     }
 }
