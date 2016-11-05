@@ -1,8 +1,12 @@
 package com.dyvak;
 
+import java.util.Arrays;
 import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Scanner;
+import java.util.regex.*;
+
+import static com.dyvak.RegexConstants.*;
+
 
 /**
  * Created by User on 17.03.2016.
@@ -21,43 +25,64 @@ public class Controller {
     // The Work method
     public void processUser(){
 
-        doMatch(Constants.SURNAME, Constants.STRING_REG);
-        doMatch(Constants.NAME, Constants.STRING_REG);
-        doMatch(Constants.SECOND_NAME, Constants.STRING_REG);
-        view.printMessage(Constants.SURNAME +" "+ Constants.NAME.charAt(0) + "."+Constants.SECOND_NAME.charAt(0) + ".");
-        model.WriteUserInformation(Constants.SURNAME +" "+ Constants.NAME.charAt(0) + "."+Constants.SECOND_NAME.charAt(0) + ".");
-        doMatch(Constants.NICKNAME, Constants.STRING_REG);
-        doMatch(Constants.COMMENT, Constants.STRING_REG);
+        validString(view.SURNAME, STRING_REG);
+        validString(view.NAME, STRING_REG);
+        validString(view.SECOND_NAME, STRING_REG);
 
-        model.WriteUserInformation(String.valueOf(Groups.TM41));
 
-        doMatch(Constants.HOME_PHONE, Constants.PHONE_REG);
-        doMatch(Constants.MOB_PHONE, Constants.PHONE_REG);
-        doMatch(Constants.MOB_PHONE_2, Constants.PHONE_REG_PLUS_NULL);
-        doMatch(Constants.MAIL, Constants.MAIL_REG);
-        doMatch(Constants.SKYPE, Constants.STRING_REG);
+        view.printMessage(view.getSurname() +" "+ view.getName().charAt(0) + "."+ view.getSecondName().charAt(0) + ".");
+        model.WriteUserInformation(view.getSurname() +" "+ view.getName().charAt(0) + "."+ view.getSecondName().charAt(0) + ".");
 
-        doMatch(Constants.INDEX, Constants.NUMBER_REG);
-        doMatch(Constants.SITY, Constants.STRING_REG);
-        doMatch(Constants.STREET, Constants.STRING_REG);
-        doMatch(Constants.HOME_NUMBER, Constants.NUMBER_REG);
+        validString(view.NICKNAME, STRING_REG);
+        validString(view.COMMENT, STRING_REG);
 
-        view.printMessage(String.valueOf(new Date()));
+        validEnum();
 
-        model.WriteUserInformation(new Date()+"\n"+View.SEPARATOR);
+        validString(view.HOME_PHONE, PHONE_REG);
+        validString(view.MOB_PHONE, PHONE_REG);
+        validString(view.MOB_PHONE_2, PHONE_REG_PLUS_NULL);
+        validString(view.MAIL, MAIL_REG);
+        validString(view.SKYPE, STRING_REG);
+        validString(view.INDEX, NUMBER_REG);
+        validString(view.CITY, STRING_REG);
+        validString(view.STREET, STRING_REG);
+        validString(view.HOME_NUMBER, NUMBER_REG);
 
+        view.printMessage(view.DATE + String.valueOf(new Date()));
+        model.WriteUserInformation(new Date()+"\n"+ view.SEPARATOR);
+    }
+
+    private void validEnum() {
+        view.printMessage(view.GROUP+(Arrays.toString(Groups.values())));
+        Scanner sc = new Scanner(System.in);
+        String userLine = sc.nextLine();
+        model.WriteUserInformation(userLine);
+    }
+
+    private void validString(String value1, String value2 ) {
+        Scanner sc = new Scanner(System.in);
+        view.printMessage(value1);
+        String userLine = sc.nextLine();
+        checkInput(userLine, value2);
+        if(value1.equals(view.SURNAME)) {
+            view.setSurname(userLine);
+        }if(value1.equals(view.NAME)){
+            view.setName(userLine);
+        }else{
+            view.setSecondName(userLine);
+        }
     }
 
     // The Utility methods
-    public void doMatch(String word, String name) {
+    public void checkInput(String word, String name) {
         Pattern pattern = Pattern.compile(name);
         Matcher matcher = pattern.matcher(word);
         if (matcher.matches()) {
-            view.printMessage(View.VALIDATION + word + View.PASSED);
+            view.printMessage(view.VALIDATION + word + view.PASSED);
             model.WriteUserInformation(word);
         }else {
-            view.printMessage(View.VALIDATION + word +
-                    View.NOT_PASSED);
+            view.printMessage(view.VALIDATION + word +
+                    view.NOT_PASSED);
         }
     }
 }

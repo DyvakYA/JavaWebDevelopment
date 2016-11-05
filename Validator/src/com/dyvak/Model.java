@@ -10,9 +10,9 @@ import java.io.IOException;
 public class Model {
 
     // The Program logic
-    public static void WriteUserInformation(String msg) {
+    public void WriteUserInformation(String msg) {
 
-        try (FileWriter printWriter = new FileWriter(Constants.FILE_NAME, true)) {
+        try (FileWriter printWriter = new FileWriter(View.FILE_NAME, true)) {
             doTask(printWriter, msg);
 
         } catch (FileNotFoundException e) {
@@ -22,7 +22,7 @@ public class Model {
         }
     }
 
-    private static void doTask(FileWriter writer, String msg) throws IOException {
+    private void doTask(FileWriter writer, String msg) throws IOException {
         writer.write(msg + "\n");
         writer.close();
     }
