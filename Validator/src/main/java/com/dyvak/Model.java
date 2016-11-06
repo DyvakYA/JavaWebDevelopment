@@ -27,6 +27,7 @@ public class Model {
      *
      * @param message transmits the value to write
      *
+     *
      * performed checks on exception
      */
     // The Program logic
@@ -46,6 +47,8 @@ public class Model {
      * class for writing user information in file and closing the FileWriter writer.
      *
      * @param message transmits the value to write in the file.
+     * @param writer down from @writeUserInformation. FileWriter(File file) This constructor creates a FileWriter object given a File object.
+     * @throws IOException Exception for IO
      */
     protected void doTask(FileWriter writer, String message) throws IOException {
         writer.write(message + "\n");

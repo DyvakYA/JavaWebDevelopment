@@ -85,14 +85,15 @@ public class Controller {
 
     /**
      * transferred in this method two values String messageForValidation and String regexRule,
-     * firstly print messageForValidation for user,
      * the user enters a value userInputLine with the keyboard,
      * userInputLine checking validator for compliance, use regexRule,
      * if userInputLine it is NAME, SURNAME, or SECOND_NAME,
      * These class values are set in the state for further use
      * values are passed on through a method checkInput in model class for writing to a file
+     * @param messageForValidation firstly print messageForValidation for user,
+     * @param regexRule rule for passing validation
      */
-    protected void validString(String messageForValidation, String regexRule) {
+    private void validString(String messageForValidation, String regexRule) {
         Scanner sc = new Scanner(System.in);
         view.printMessage(messageForValidation);
         String userInputLine = sc.nextLine();
@@ -111,9 +112,11 @@ public class Controller {
      * Into the method passed the two values userInputLine that determine what message
      * will be displayed to the user for input data,
      * and regexRule determine the type of validation that will be applied for this userInputLine.
+     * @param userInputLine user input this line from console
+     * @param regexRule rule for passing validation
      */
     // The Utility methods
-    public void checkInput(String userInputLine, String regexRule) {
+    protected void checkInput(String userInputLine, String regexRule) {
         Pattern pattern = Pattern.compile(regexRule);
         Matcher matcher = pattern.matcher(userInputLine);
         if (matcher.matches()) {
