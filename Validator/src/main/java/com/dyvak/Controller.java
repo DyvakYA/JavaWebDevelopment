@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.Scanner;
 import java.util.regex.*;
 
-import static com.dyvak.RegexConstants.*;
-
 /**
  * Controller.java
  * <p>
@@ -43,28 +41,30 @@ public class Controller {
     // The Work method
     public void processUser(){
 
-        validString(view.SURNAME, STRING_REG);
-        validString(view.NAME, STRING_REG);
-        validString(view.SECOND_NAME, STRING_REG);
+        RegexConst regexConst = new RegexConst();
+
+        validString(view.SURNAME, regexConst.STRING_REG);
+        validString(view.NAME, regexConst.STRING_REG);
+        validString(view.SECOND_NAME, regexConst.STRING_REG);
 
 
         view.printMessage(view.getSurname() +" "+ view.getName().charAt(0) + "."+ view.getSecondName().charAt(0) + ".");
         model.writeUserInformation(view.getSurname() + " " + view.getName().charAt(0) + "." + view.getSecondName().charAt(0) + ".");
 
-        validString(view.NICKNAME, STRING_REG);
-        validString(view.COMMENT, STRING_REG);
+        validString(view.NICKNAME, regexConst.STRING_REG);
+        validString(view.COMMENT, regexConst.STRING_REG);
 
         validEnum();
 
-        validString(view.HOME_PHONE, PHONE_REG);
-        validString(view.MOB_PHONE, PHONE_REG);
-        validString(view.MOB_PHONE_2, PHONE_REG_PLUS_NULL);
-        validString(view.MAIL, MAIL_REG);
-        validString(view.SKYPE, STRING_REG);
-        validString(view.INDEX, NUMBER_REG);
-        validString(view.CITY, STRING_REG);
-        validString(view.STREET, STRING_REG);
-        validString(view.HOME_NUMBER, NUMBER_REG);
+        validString(view.HOME_PHONE, regexConst.PHONE_REG);
+        validString(view.MOB_PHONE, regexConst.PHONE_REG);
+        validString(view.MOB_PHONE_2, regexConst.PHONE_REG_PLUS_NULL);
+        validString(view.MAIL, regexConst.MAIL_REG);
+        validString(view.SKYPE, regexConst.STRING_REG);
+        validString(view.INDEX, regexConst.NUMBER_REG);
+        validString(view.CITY, regexConst.STRING_REG);
+        validString(view.STREET, regexConst.STRING_REG);
+        validString(view.HOME_NUMBER, regexConst.NUMBER_REG);
 
         view.printMessage(view.DATE + String.valueOf(new Date()));
         model.writeUserInformation(new Date() + "\n" + view.SEPARATOR);
