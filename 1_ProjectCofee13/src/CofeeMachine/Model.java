@@ -7,12 +7,15 @@ import java.util.Date;
  */
 public class Model {
 
-    WatchMaker maker = getMakerByName("Digital");
-    Watch watch = maker.createWatch();
-    watch.showTime();
+     void Cofee(){
+
+        WatchMaker maker = getMakerByName("Digital");
+        Watch watch = maker.createWatch();
+        watch.showTime();
+    }
 
 
-    public WatchMaker getMakerByName(String maker) {
+    public static WatchMaker getMakerByName(String maker) {
         if (maker.equals("Digital"))
             return new DigitalWatchMaker();
         else if (maker.equals("Digital"))
