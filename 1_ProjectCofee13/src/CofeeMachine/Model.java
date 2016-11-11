@@ -6,32 +6,30 @@ import java.util.Date;
  * Created by User on 17.03.2016.
  */
 public class Model {
-    private int value;
+
+    WatchMaker maker = getMakerByName("Digital");
+    Watch watch = maker.createWatch();
+    watch.showTime();
+
+
+    public WatchMaker getMakerByName(String maker) {
+        if (maker.equals("Digital"))
+            return new DigitalWatchMaker();
+        else if (maker.equals("Digital"))
+            return new RomeWatchMaker();
+
+        throw new RuntimeException("No watch" + maker);
+    }
+}
 
     // The Program logic
 
     /**
      * in this method add valueInt with this.value
-     * @param valueInt
+     * @param
      * @return sum
      */
-    public class Cofee {
 
-
-            WatchMaker maker = getMakerByName("Digital");
-            Watch watch = maker.createWatch();
-            watch.showTime();
-
-
-        public static WatchMaker getMakerByName(String maker){
-            if(maker.equals("Digital"))
-                return new DigitalWatchMaker();
-            else if (maker.equals("Digital"))
-                return new RomeWatchMaker();
-
-            throw new RuntimeException("No watch"+ maker);
-        }
-    }
 
     interface Watch{
         void showTime();

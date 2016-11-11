@@ -27,22 +27,22 @@ public class Controller {
     }
 
     // The Work method
-    public void processUser(){
-        Scanner sc = new Scanner(System.in);
-
-        model.setValue(inputIntValueWithScanner(sc));
-        model.addIntOurValue(4);
-
-        view.printMessageAndInt(view.OUR_INT, model.getValue());
-    }
-
-    // The Utility methods
-    public int inputIntValueWithScanner(Scanner sc) {
-        view.printMessage(view.INPUT_INT_DATA);
-        while( ! sc.hasNextInt()) {
-            view.printMessage(view.WRONG_INPUT_INT_DATA + view.INPUT_INT_DATA);
-            sc.next();
-        }
-        return sc.nextInt();
-    }
+//    public void processUser(){
+//        Scanner sc = new Scanner(System.in);
+//
+//        model.setValue(inputIntValueWithScanner(sc));
+//        model.addIntOurValue(4);
+//
+//        view.printMessageAndInt(view.OUR_INT, model.getValue());
+//    }
+//
+//    // The Utility methods
+//    public int inputIntValueWithScanner(Scanner sc) {
+//        view.printMessage(view.INPUT_INT_DATA);
+//        while( ! sc.hasNextInt()) {
+//            view.printMessage(view.WRONG_INPUT_INT_DATA + view.INPUT_INT_DATA);
+//            sc.next();
+//        }
+//        return sc.nextInt();
+//    }
 }
