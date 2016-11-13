@@ -10,10 +10,6 @@ public class OrderedComparator<T> implements Comparator<T> {
     private Comparator<T> comparator;
     private Order order;
 
-    public OrderedComparator(Comparator<T> comparator) {
-        this(comparator, Order.ASC);
-    }
-
     public OrderedComparator(Comparator<T> comparator, Order order) {
         this.comparator = comparator;
         this.order = order;
@@ -29,6 +25,6 @@ public class OrderedComparator<T> implements Comparator<T> {
 
     public enum Order {
         ASC,
-        DESC;
+        DESC
     }
 }

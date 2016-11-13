@@ -1,17 +1,9 @@
 package CoffeeMachine.Controller;
 
-import CoffeeMachine.Comparator.MultiComparator;
-import CoffeeMachine.Comparator.OrderedComparator;
-
-import CoffeeMachine.Filter.CoffeePredicate;
-import CoffeeMachine.Filter.Filter;
-import CoffeeMachine.Filter.Predicate;
-import CoffeeMachine.Model.Coffee;
-import CoffeeMachine.Model.Model;
+import CoffeeMachine.Comparator.*;
+import CoffeeMachine.Filter.*;
+import CoffeeMachine.Model.*;
 import CoffeeMachine.View;
-
-import static CoffeeMachine.Comparator.OrderedComparator.Order.DESC;
-import static CoffeeMachine.Comparator.CoffeeComparator.PRICE_WEIGHT;
 
 import java.util.Collections;
 import java.util.List;
@@ -36,21 +28,26 @@ public class Controller {
         Model model = new Model();
         List<Coffee> coffee = model.Coffee();
 
+        //Filter by coffee type
         view.printMessage(view.SEPARATOR+view.FILTER_BY_COFFEE_TYPE+view.SEPARATOR);
-    //    coffee = getCoffees(coffee, CoffeePredicate.byCoffeeType("CornCoffee"));
+//        coffee = getCoffees(coffee, CoffeePredicate.byCoffeeType("CornCoffee"));
 
+        //Filter by weight
         view.printMessage(view.SEPARATOR+view.FILTER_BY_WEIGHT+view.SEPARATOR);
         coffee = getCoffees(coffee, CoffeePredicate.byWeight(100.00, 500.00));
 
+        //Filter by price
         view.printMessage(view.SEPARATOR+view.FILTER_BY_PRICE+view.SEPARATOR);
         coffee = getCoffees(coffee, CoffeePredicate.byPrice(1000.00, 2000.00));
 
+        //Sorting by price/weight
         Collections.sort(coffee, new MultiComparator<>(
-                new OrderedComparator<>(PRICE_WEIGHT, DESC)
+                new OrderedComparator<>(CoffeeComparator.PRICE_WEIGHT, OrderedComparator.Order.DESC)
         ));
         view.printMessage(view.SEPARATOR+view.SORT_BY_PRICE_WEIGHT+view.SEPARATOR);
-        coffee.forEach(System.out::println);
 
+        //Show all list of coffee filtering and sorting, final result
+        coffee.forEach(System.out::println);
     }
 
     private List<Coffee> getCoffees(List<Coffee> coffee, Predicate<Coffee> predicate) {
