@@ -12,7 +12,9 @@ public class View {
     public final String SEPARATOR = "-------------------------";
     public final String TOTAL_PRICE_LIMIT = "You have price limit only: ";
     public final String TOTAL_WEIGHT_LIMIT = "You have weight limit only: ";
-    public final String NOW_YOU_GOT = "Now you try to get: ";
+    public final String NOW_YOU_GOT = "Now you got: ";
+    public final String UNSUPPORTED = "Unsupported type of coffee: ";
+
 
     public void printMessage(String message){
         System.out.println(message);

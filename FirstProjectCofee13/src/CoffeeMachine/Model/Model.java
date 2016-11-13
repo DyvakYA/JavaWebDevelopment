@@ -49,12 +49,14 @@ public class Model {
 
     private void checkPriceAndWeight() {
 
-        coffeeTrack.setTotalPrice(coffeeTrack.getTotalPrice() + coffee.getPrice());
-        coffeeTrack.setTotalWeight(coffeeTrack.getTotalWeight() + coffee.getWeight());
+        double priceValue = coffeeTrack.getTotalPrice() + coffee.getPrice();
+        double weightValue = coffeeTrack.getTotalWeight() + coffee.getWeight();
 
-        if (coffeeTrack.getTotalPrice() < coffeeTrack.getPriceLimit()) {
-            if(coffeeTrack.getTotalWeight() < coffeeTrack.getWeightLimit()) {
+        if (priceValue < coffeeTrack.getPriceLimit()) {
+            if(weightValue < coffeeTrack.getWeightLimit()) {
                 coffeeCollection.add(coffee);
+                coffeeTrack.setTotalPrice(priceValue);
+                coffeeTrack.setTotalWeight(weightValue);
             }else{
                 view.printMessage(view.SEPARATOR +
                         view.TOTAL_WEIGHT_LIMIT +
@@ -85,7 +87,7 @@ public class Model {
         else if (maker.equals(jacobsCoffee.getCoffeeType())){
             return new JacobsCoffeeLoader();
         }
-        throw new RuntimeException("Unsupported type of coffee: " + maker);
+        throw new RuntimeException(view.UNSUPPORTED + maker);
     }
 }
 
