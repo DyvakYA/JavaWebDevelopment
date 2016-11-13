@@ -4,19 +4,33 @@ package CoffeeMachine.Model;
  * Created by Dyvak on 12.11.2016.
  */
 class CornCoffee extends Coffee {
+
     private long id = nextId++;
     private final String coffeeType = "CornCoffee";
     private String pack = "bank";
-    private double weight = 200.0;
+    private double weight;
+    private double priceWeight;
+    private double coffeeWeight = 200.00;
+    private double packWeight = 30.00;
     private double price = 1200.0;
 
 
-    public long getId() {
-        return id;
+    CornCoffee() {
+        weight = coffeeWeight+packWeight;
+        priceWeight = price / coffeeWeight;
     }
 
     public String getCoffeeType() {
         return coffeeType;
+    }
+
+    public double getPriceWeight() {
+        return priceWeight;
+    }
+
+    @Override
+    public long getId() {
+        return id;
     }
 
     @Override
@@ -26,7 +40,7 @@ class CornCoffee extends Coffee {
 
     @Override
     public double getWeight() {
-        return weight;
+        return coffeeWeight+packWeight;
     }
 
     @Override
@@ -37,6 +51,7 @@ class CornCoffee extends Coffee {
                 ", pack='" + pack + '\'' +
                 ", weight=" + weight +
                 ", price=" + price +
+                ", priceWeight=" + (String.format("%(.2f", priceWeight)) +
                 '}';
     }
 }

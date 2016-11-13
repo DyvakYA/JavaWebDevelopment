@@ -14,6 +14,7 @@ public class View {
     public final String TOTAL_WEIGHT_LIMIT = "You have weight limit only: ";
     public final String NOW_YOU_GOT = "Now you got: ";
     public final String UNSUPPORTED = "Unsupported type of coffee: ";
+    public final String SORT_BY_PRICE_WEIGHT = "Sort by best value of price/weight  ";
 
 
     public void printMessage(String message){
