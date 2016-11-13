@@ -1,4 +1,4 @@
-package CofeeMachine.Filter;
+package CoffeeMachine.Filter;
 
 import java.util.ArrayList;
 import java.util.List;

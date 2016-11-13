@@ -1,4 +1,4 @@
-package CofeeMachine.Model;
+package CoffeeMachine.Model;
 
 /**
  * Created by Dyvak on 12.11.2016.

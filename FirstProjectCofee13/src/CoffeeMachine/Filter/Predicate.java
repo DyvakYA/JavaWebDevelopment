@@ -1,4 +1,4 @@
-package CofeeMachine.Filter;
+package CoffeeMachine.Filter;
 
 /**
  * Created by Dyvak on 12.11.2016.

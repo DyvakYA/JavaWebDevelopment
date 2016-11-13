@@ -1,6 +1,7 @@
-package CofeeMachine;
+package CoffeeMachine;
 
-import CofeeMachine.Model.Model;
+import CoffeeMachine.Controller.Controller;
+import CoffeeMachine.Model.Model;
 
 public class Main {
 

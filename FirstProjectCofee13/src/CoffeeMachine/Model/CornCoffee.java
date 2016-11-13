@@ -1,22 +1,21 @@
-package CofeeMachine.Model;
+package CoffeeMachine.Model;
 
 /**
  * Created by Dyvak on 12.11.2016.
  */
 class CornCoffee extends Coffee {
     private long id = nextId++;
-    private String coffeeType = "CornCoffee";
+    private final String coffeeType = "CornCoffee";
     private String pack = "bank";
-    private double weight = 200.00;
-    private double price = 1200.00;
+    private double weight = 200.0;
+    private double price = 1200.0;
 
-    @Override
+
     public long getId() {
         return id;
     }
 
     public String getCoffeeType() {
-
         return coffeeType;
     }
 

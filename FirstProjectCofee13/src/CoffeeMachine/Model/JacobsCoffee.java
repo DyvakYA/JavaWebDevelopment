@@ -1,28 +1,21 @@
-package CofeeMachine.Model;
+package CoffeeMachine.Model;
 
 /**
  * Created by Dyvak on 12.11.2016.
  */
-public class SolubleCoffee extends Coffee {
-
+class JacobsCoffee extends Coffee {
     private long id = nextId++;
-    private String coffeeType = "SolubleCoffee";
-    private String pack = "pack";
-    private double weight = 500.00;
-    private double price = 1500.00;
+    private final String coffeeType = "JacobsCoffee";
+    private String pack = "bank";
+    private double weight = 200.0;
+    private double price = 1300.0;
 
-    public String getCoffeeType() {
-        return coffeeType;
-    }
-
-    @Override
     public long getId() {
         return id;
     }
 
-    @Override
-    public double getWeight() {
-        return weight;
+    public String getCoffeeType() {
+        return coffeeType;
     }
 
     @Override
@@ -31,8 +24,13 @@ public class SolubleCoffee extends Coffee {
     }
 
     @Override
+    public double getWeight() {
+        return weight;
+    }
+
+    @Override
     public String toString() {
-        return "SolubleCoffee{" +
+        return "JacobsCoffee{" +
                 "id=" + id +
                 ", coffeeType='" + coffeeType + '\'' +
                 ", pack='" + pack + '\'' +
@@ -41,4 +39,3 @@ public class SolubleCoffee extends Coffee {
                 '}';
     }
 }
-
