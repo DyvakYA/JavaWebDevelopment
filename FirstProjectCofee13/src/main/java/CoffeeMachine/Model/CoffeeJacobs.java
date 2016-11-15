@@ -1,15 +1,14 @@
 package CoffeeMachine.Model;
 
 /**
- * Main.java
+ * JacobsCoffee.java
  * <p>
- * Start point of the validation.
- * Here we will start controller {@link Controller}
+ * This type of coffee can be placed in a truck with coffee
  *
  * @author Dyvak Yurii(dyvakyurii@gmail.com)
- * @version 1.0 5.11.2016.
+ * @version 1.0 15.11.2016.
  */
-class JacobsCoffee implements Coffee {
+class CoffeeJacobs implements Coffee {
 
     private final String coffeeType = "JacobsCoffee";
     private String pack = "bank";
@@ -20,7 +19,7 @@ class JacobsCoffee implements Coffee {
     private double price = 1300.0;
     
 
-    JacobsCoffee() {
+    CoffeeJacobs() {
         weight = coffeeWeight+packWeight;
         priceWeight = price / coffeeWeight;
     }
@@ -33,17 +32,14 @@ class JacobsCoffee implements Coffee {
         return priceWeight;
     }
 
-    @Override
     public double getPrice() {
         return price;
     }
 
-    @Override
     public double getWeight() {
         return coffeeWeight+packWeight;
     }
 
-    @Override
     public String toString() {
         return "JacobsCoffee{" +
                 ", coffeeType='" + coffeeType + '\'' +

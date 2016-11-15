@@ -1,13 +1,13 @@
 package CoffeeMachine.Model;
 
 /**
- * Main.java
+ * AbstractMethodCoffeeMaker.java
  * <p>
- * Start point of the validation.
- * Here we will start controller {@link Controller}
+ * Interface AbstractMethodCoffeeMaker
+ * for realize one method loadCoffee
  *
  * @author Dyvak Yurii(dyvakyurii@gmail.com)
- * @version 1.0 5.11.2016.
+ * @version 1.0 15.11.2016.
  */
 interface AbstractMethodCoffeeMaker {
     Coffee loadCoffee();

@@ -18,6 +18,8 @@ public class CoffeePredicate {
 
          /**
           * Instructions for filtering parameters byCoffeeType
+          * @param coffeeType for make filter by coffee type
+          * @return Only values equivalent to the specified parameter of coffeeType.
           */
         public static Predicate<Coffee> byCoffeeType(String coffeeType) {
             return new Predicate<Coffee>() {
@@ -33,6 +35,9 @@ public class CoffeePredicate {
 
     /**
      * Instructions for filtering parameters byWeight
+     * @param minWeight It sets the minimum value for the filter
+     * @param maxWeight It sets the maximum value for the filter
+     * @return objects of collection in input diapason of weight.
      */
         public static Predicate<Coffee> byWeight(double minWeight, double maxWeight) {
             return new Predicate<Coffee>() {
@@ -48,7 +53,10 @@ public class CoffeePredicate {
         }
 
     /**
-     * Instructions for filtering parameters byPrice
+     * Instructions for filtering parameters byPrice.
+     * @param minPrice It sets the minimum value for the filter
+     * @param maxPrice It sets the maximum value for the filter
+     * @return objects of collection in input diapason of price.
      */
     public static Predicate<Coffee> byPrice(double minPrice, double maxPrice) {
         return new Predicate<Coffee>() {

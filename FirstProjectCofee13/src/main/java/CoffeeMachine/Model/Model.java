@@ -8,23 +8,29 @@ import java.util.List;
 /**
  * Main.java
  * <p>
- * Start point of the validation.
- * Here we will start controller {@link Controller}
+ * Start point of the input data.
+ * Here we will start controller {@link CoffeeMachine.Controller.Controller}
  *
  * @author Dyvak Yurii(dyvakyurii@gmail.com)
- * @version 1.0 5.11.2016.
+ * @version 1.0 15.11.2016.
  */
 public class Model {
 
     View view = new View();
-    CornCoffee corn = new CornCoffee();
-    JacobsCoffee jacobsCoffee = new JacobsCoffee();
-    SolubleCoffee solubleCoffee = new SolubleCoffee();
+    CoffeeBeans corn = new CoffeeBeans();
+    CoffeeJacobs coffeeJacobs = new CoffeeJacobs();
+    CoffeeSoluble coffeeSoluble = new CoffeeSoluble();
     CoffeeTrack coffeeTrack = new CoffeeTrack();
     AbstractMethodCoffeeMaker maker;
     Coffee coffee;
     List<Coffee> coffeeCollection = new ArrayList<>();
 
+    /**
+     * List of input coffee type
+     * In class CoffeeTrack store limits of entering data
+     * weight and price
+     * @return list of input objects
+     */
     public List<Coffee> Coffee() {
 
         CoffeeMaker("CornCoffee");
@@ -42,23 +48,35 @@ public class Model {
                 view.COMMON_LIST +
                 view.SEPARATOR);
 
+        /**
+         * Print all objects in collection.
+         */
         coffeeCollection.forEach(System.out::println);
         return coffeeCollection;
     }
 
+    /**
+     * Class to create objects in the collection.
+     * Pass a parameter coffeeType by which an object is created.
+     * @param coffeeType determine the type of object being created
+     */
     private void CoffeeMaker(String coffeeType) {
-        maker = getCoffeeByCoffeeTypeWeightPrice(coffeeType);
+        maker = getCoffeeByCoffeeType(coffeeType);
         coffee = maker.loadCoffee();
-
+        // Enables checking of limits in the class CoffeeTrack
         checkPriceLimit();
     }
 
+    /**
+     * Method for checking of price limits from CoffeeTrack class
+     */
     private void checkPriceLimit() {
 
         double priceValue = coffeeTrack.getTotalPrice() + coffee.getPrice();
         double weightValue = coffeeTrack.getTotalWeight() + coffee.getWeight();
 
         if (priceValue < coffeeTrack.getPriceLimit()) {
+            // Enables checking of limits of weight in the class CoffeeTrack
             checkWeightLimit(priceValue, weightValue);
         }else{
            view.printMessage(view.SEPARATOR +
@@ -70,6 +88,9 @@ public class Model {
        }
     }
 
+    /**
+     * Method for checking of weights limits from CoffeeTrack class
+     */
     private void checkWeightLimit(double priceValue, double weightValue) {
         if(weightValue < coffeeTrack.getWeightLimit()) {
             coffeeCollection.add(coffee);
@@ -85,17 +106,24 @@ public class Model {
         }
     }
 
+    /**
+     * Method of creating objects
+     * Check what parameter enter user and create
+     * object of this parameter
+     * @param maker user parameter for create object
+     * @return object in collection
+     */
     // The Program logic
-    public AbstractMethodCoffeeMaker getCoffeeByCoffeeTypeWeightPrice(String maker) {
+    public AbstractMethodCoffeeMaker getCoffeeByCoffeeType(String maker) {
 
         if(maker.equals(corn.getCoffeeType())) {
-            return new CornCoffeeLoader();
+            return new CoffeeBeansLoader();
         }
-        else if (maker.equals(solubleCoffee.getCoffeeType())){
-            return new SolubleCoffeeLoader();
+        else if (maker.equals(coffeeSoluble.getCoffeeType())){
+            return new CoffeeSolubleLoader();
         }
-        else if (maker.equals(jacobsCoffee.getCoffeeType())){
-            return new JacobsCoffeeLoader();
+        else if (maker.equals(coffeeJacobs.getCoffeeType())){
+            return new CoffeeJacobsLoader();
         }
         throw new RuntimeException(view.UNSUPPORTED + maker);
     }

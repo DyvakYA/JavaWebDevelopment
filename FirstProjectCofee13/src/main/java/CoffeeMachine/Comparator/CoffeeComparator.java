@@ -17,7 +17,7 @@ public enum CoffeeComparator implements Comparator<Coffee> {
     PRICE_WEIGHT {
         @Override
         public int compare(Coffee a, Coffee b) {
-            return Double.compare(a.getWeight(), b.getWeight());
+            return Double.compare(a.getPriceWeight(), b.getPriceWeight());
         }
     }
 }

@@ -1,26 +1,25 @@
 package CoffeeMachine.Model;
 
 /**
- * Main.java
+ * SolubleCoffee.java
  * <p>
- * Start point of the validation.
- * Here we will start controller {@link Controller}
+ * This type of coffee can be placed in a truck with coffee
  *
  * @author Dyvak Yurii(dyvakyurii@gmail.com)
- * @version 1.0 5.11.2016.
+ * @version 1.0 15.11.2016.
  */
-class CornCoffee implements Coffee {
+class CoffeeSoluble implements Coffee {
 
-    private final String coffeeType = "CornCoffee";
-    private String pack = "bank";
+    private final String coffeeType = "SolubleCoffee";
+    private String pack = "pack";
     private double weight;
     private double priceWeight;
-    private double coffeeWeight = 200.00;
-    private double packWeight = 30.00;
-    private double price = 1200.0;
+    private double coffeeWeight = 500.00;
+    private double packWeight = 20.00;
+    private double price = 1500.00;
 
 
-    CornCoffee() {
+    CoffeeSoluble() {
         weight = coffeeWeight+packWeight;
         priceWeight = price / coffeeWeight;
     }
@@ -33,19 +32,17 @@ class CornCoffee implements Coffee {
         return priceWeight;
     }
 
-    @Override
-    public double getPrice() {
-        return price;
-    }
 
-    @Override
     public double getWeight() {
         return coffeeWeight+packWeight;
     }
 
-    @Override
+    public double getPrice() {
+        return price;
+    }
+
     public String toString() {
-        return "CornCoffee{" +
+        return "SolubleCoffee{" +
                 ", coffeeType='" + coffeeType + '\'' +
                 ", pack='" + pack + '\'' +
                 ", weight=" + weight +
@@ -54,3 +51,4 @@ class CornCoffee implements Coffee {
                 '}';
     }
 }
+

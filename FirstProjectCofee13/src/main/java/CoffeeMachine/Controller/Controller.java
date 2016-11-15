@@ -11,11 +11,11 @@ import java.util.List;
 /**
  * Main.java
  * <p>
- * Start point of the validation.
+ * Start point of the sorting and filtering.
  * Here we will start controller {@link Controller}
  *
  * @author Dyvak Yurii(dyvakyurii@gmail.com)
- * @version 1.0 5.11.2016.
+ * @version 1.0 15.11.2016.
  */
 public class Controller {
 
@@ -28,6 +28,10 @@ public class Controller {
         this.view = view;
     }
 
+    /**
+     * This is main method
+     * set all parameters for sorting and filtering
+     */
     //The Work method
     public void processUser(){
 
@@ -56,6 +60,14 @@ public class Controller {
         coffee.forEach(System.out::println);
     }
 
+    /**
+     * This method filtering the list with predicate
+     * and print all objects of list
+     *
+     * @param coffee list of objects for filtering
+     * @param predicate sets filtering options
+     * @return filtered list
+     */
     private List<Coffee> getCoffees(List<Coffee> coffee, Predicate<Coffee> predicate) {
         coffee = Filter.filter(coffee, predicate);
         coffee.forEach(System.out::println);
